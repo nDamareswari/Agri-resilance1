@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroResilience | Professional Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .slide { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 40px; }
+        .bg-agro { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-slate-900">
+
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-200 p-4 flex justify-between items-center px-6 md:px-10">
+        <h1 class="text-xl font-black tracking-tighter text-emerald-800 uppercase">AgroResilience</h1>
+        
+        <div class="flex items-center gap-4">
+            <select id="lang-select" class="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold p-2 rounded-lg outline-none cursor-pointer">
+                <option value="en-US">ENGLISH</option>
+                <option value="hi-IN">HINDI</option>
+                <option value="ml-IN">MALAYALAM</option>
+                <option value="te-IN">TELUGU</option>
+            </select>
+            <div class="hidden md:flex space-x-6 font-bold text-[10px] uppercase tracking-widest text-slate-500">
+                <a href="#home" data-t="navHome">Home</a>
+                <a href="#climate" data-t="navClimate">Climate</a>
+                <a href="#market" data-t="navMarket">Market</a>
+                <a href="#labour" data-t="navLabour">Labour</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="slide bg-agro text-white items-center text-center">
+        <div class="max-w-4xl">
+            <h2 data-t="heroTitle" class="text-5xl md:text-8xl font-extrabold leading-none mb-6 italic text-emerald-400 uppercase tracking-tighter">FUTURE SECURED.</h2>
+            <p data-t="heroSub" class="text-lg text-emerald-100 opacity-80 mb-10">Enterprise-grade climate resilience for village-level agriculture.</p>
+            <a href="#climate" data-t="heroBtn" class="bg-emerald-500 text-white px-10 py-4 rounded-full font-black uppercase tracking-widest shadow-2xl hover:bg-emerald-400 transition">Get Started</a>
+        </div>
+    </section>
+
+    <section id="climate" class="slide bg-white">
+        <div class="max-w-6xl mx-auto w-full">
+            <h3 data-t="headClimate" class="text-3xl font-bold mb-10 border-l-8 border-emerald-600 pl-6 uppercase">01 // Climate Intelligence</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                    <p data-t="labelRain" class="text-[10px] font-bold text-slate-400 uppercase">Rainfall</p>
+                    <p class="text-3xl font-black">120mm</p>
+                </div>
+                <div class="p-6 bg-orange-50 rounded-2xl border border-orange-200 text-center text-orange-700">
+                    <p data-t="labelHeat" class="text-[10px] font-bold uppercase">Heat Index</p>
+                    <p class="text-3xl font-black">38°C</p>
+                </div>
+                <div class="p-6 bg-red-50 rounded-2xl border border-red-200 text-center text-red-700">
+                    <p data-t="labelFlood" class="text-[10px] font-bold uppercase">Flood Risk</p>
+                    <p data-t="highText" class="text-3xl font-black italic">HIGH</p>
+                </div>
+                <div class="p-6 bg-emerald-50 rounded-2xl border border-emerald-200 text-center text-emerald-700">
+                    <p data-t="labelDrought" class="text-[10px] font-bold uppercase">Drought</p>
+                    <p data-t="lowText" class="text-3xl font-black">LOW</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="market" class="slide bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16">
+            <div>
+                <h3 data-t="headMarket" class="text-3xl font-bold mb-6 border-l-8 border-emerald-500 pl-6 uppercase tracking-tighter">02 // Direct Market</h3>
+                <p data-t="marketSub" class="text-slate-400 mb-8">Sell directly to consumers. Use the mic to list your crop automatically.</p>
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <p data-t="crop1" class="text-xs text-slate-500 uppercase">Coconut</p>
+                        <p class="text-xl font-bold text-emerald-400">₹42</p>
+                    </div>
+                    <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                        <p data-t="crop2" class="text-xs text-slate-500 uppercase">Rubber</p>
+                        <p class="text-xl font-bold text-emerald-400">₹165</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-3xl text-slate-900">
+                <div class="flex justify-between mb-4">
+                    <h4 data-t="formMarketTitle" class="font-bold uppercase tracking-widest text-xs">Crop Listing Form</h4>
+                    <button onclick="startVoice('crop-desc')" class="text-emerald-600 font-bold text-xs flex items-center gap-1">🎤 <span data-t="btnVoice">USE VOICE</span></button>
+                </div>
+                <div class="space-y-3">
+                    <input type="text" data-p="phName" placeholder="Name" class="w-full border p-3 rounded-xl outline-none focus:border-emerald-500 text-sm">
+                    <textarea id="crop-desc" data-p="phMarketDesc" placeholder="Details (Crop, Qty, Price)" class="w-full border p-3 rounded-xl h-20 outline-none text-sm"></textarea>
+                    <button data-t="btnPost" onclick="handleSubmit('Success')" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold uppercase text-xs tracking-widest hover:bg-emerald-600 transition">Post Listing</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="labour" class="slide bg-emerald-50">
+        <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-10 items-start">
+            <div>
+                <h3 data-t="headLabour" class="text-3xl font-bold mb-8 border-l-8 border-emerald-800 pl-6 uppercase">03 // Hire Force</h3>
+                <div class="space-y-3">
+                    <div class="bg-white p-4 rounded-2xl flex justify-between items-center shadow-sm border border-emerald-100">
+                        <p class="font-bold text-sm">Ravi (Harvesting)</p>
+                        <button data-t="btnHire" onclick="handleSubmit('Sent')" class="bg-emerald-800 text-white px-4 py-2 rounded-lg text-[10px] font-bold uppercase">Hire</button>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl flex justify-between items-center shadow-sm border border-emerald-100">
+                        <p class="font-bold text-sm">Soma (Plowing)</p>
+                        <button data-t="btnHire" onclick="handleSubmit('Sent')" class="bg-emerald-800 text-white px-4 py-2 rounded-lg text-[10px] font-bold uppercase">Hire</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-emerald-800 p-8 rounded-3xl text-white shadow-2xl">
+                <div class="flex justify-between mb-4">
+                    <h4 data-t="formLabourTitle" class="font-bold uppercase tracking-widest text-xs text-emerald-200">Labour Registration</h4>
+                    <button onclick="startVoice('labour-desc')" class="text-emerald-300 font-bold text-xs flex items-center gap-1">🎤 <span data-t="btnVoice">VOICE</span></button>
+                </div>
+                <div class="space-y-3 text-slate-900">
+                    <input type="text" data-p="phName" placeholder="Full Name" class="w-full p-3 rounded-xl outline-none text-sm">
+                    <textarea id="labour-desc" data-p="phLabourDesc" placeholder="Skills & Wage Details" class="w-full p-3 rounded-xl h-20 outline-none text-sm"></textarea>
+                    <button data-t="btnReg" onclick="handleSubmit('Saved')" class="w-full bg-emerald-400 text-emerald-950 py-4 rounded-xl font-bold uppercase text-xs tracking-widest">Register</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- 1. FULL TRANSLATION MAP ---
+        const translations = {
+            "en-US": {
+                navHome: "Home", navClimate: "Climate", navMarket: "Market", navLabour: "Labour",
+                heroTitle: "FUTURE SECURED.", heroSub: "Enterprise-grade climate resilience for village-level agriculture.", heroBtn: "Get Started",
+                headClimate: "01 // Climate Intelligence", labelRain: "Rainfall", labelHeat: "Heat Index", labelFlood: "Flood Risk", labelDrought: "Drought", highText: "HIGH", lowText: "LOW",
+                headMarket: "02 // Direct Market", marketSub: "Sell directly to consumers. Use the mic to list your crop automatically.", crop1: "Coconut", crop2: "Rubber", formMarketTitle: "Crop Listing Form", btnPost: "Post Listing",
+                headLabour: "03 // Hire Force", formLabourTitle: "Labour Registration", btnReg: "Register", btnVoice: "VOICE", btnHire: "HIRE",
+                phName: "Full Name", phMarketDesc: "Details (Crop, Qty, Price)", phLabourDesc: "Skills & Wage Details"
+            },
+            "te-IN": {
+                navHome: "హోమ్", navClimate: "వాతావరణం", navMarket: "మార్కెట్", navLabour: "కూలీలు",
+                heroTitle: "భవిష్యత్తు సురక్షితం.", heroSub: "గ్రామ స్థాయి వ్యవసాయం కోసం మెరుగైన వాతావరణ రక్షణ.", heroBtn: "ప్రారంభించండి",
+                headClimate: "01 // వాతావరణ సమాచారం", labelRain: "వర్షపాతం", labelHeat: "ఉష్ణోగ్రత", labelFlood: "వరద ప్రమాదం", labelDrought: "కరువు", highText: "ఎక్కువ", lowText: "తక్కువ",
+                headMarket: "02 // ప్రత్యక్ష మార్కెట్", marketSub: "వినియోగదారులకు నేరుగా అమ్మండి. మైక్ ఉపయోగించి వివరాలు తెలపండి.", crop1: "కొబ్బరి", crop2: "రబ్బరు", formMarketTitle: "పంట నమోదు ఫారమ్", btnPost: "నమోదు చేయండి",
+                headLabour: "03 // కూలీల కేంద్రం", formLabourTitle: "కూలీల రిజిస్ట్రేషన్", btnReg: "రిజిస్టర్", btnVoice: "వాయిస్", btnHire: "నియమించుకో",
+                phName: "పూర్తి పేరు", phMarketDesc: "వివరాలు (పంట, పరిమాణం, ధర)", phLabourDesc: "నైపుణ్యాలు మరియు కూలీ వివరాలు"
+            },
+            "hi-IN": {
+                navHome: "होम", navClimate: "जलवायु", navMarket: "बाजार", navLabour: "मजदूर",
+                heroTitle: "भविष्य सुरक्षित।", heroSub: "ग्रामीण स्तर की खेती के लिए उन्नत जलवायु सुरक्षा।", heroBtn: "शुरू करें",
+                headClimate: "01 // जलवायु जानकारी", labelRain: "वर्षा", labelHeat: "तापमान", labelFlood: "बाढ़ जोखिम", labelDrought: "सूखा", highText: "उच्च", lowText: "कम",
+                headMarket: "02 // सीधा बाजार", marketSub: "ग्राहकों को सीधे बेचें। आवाज का उपयोग करें।", crop1: "नारियल", crop2: "रबर", formMarketTitle: "फसल सूची फॉर्म", btnPost: "पोस्ट करें",
+                headLabour: "03 // मजदूर हब", formLabourTitle: "मजदूर पंजीकरण", btnReg: "पंजीकरण", btnVoice: "आवाज", btnHire: "हायर करें",
+                phName: "पूरा नाम", phMarketDesc: "विवरण (फसल, मात्रा, कीमत)", phLabourDesc: "कौशल और मजदूरी विवरण"
+            },
+            "ml-IN": {
+                navHome: "ഹോം", navClimate: "കാലാവസ്ഥ", navMarket: "വിപണി", navLabour: "തൊഴിലാളികൾ",
+                heroTitle: "ഭാവി സുരക്ഷിതം.", heroSub: "ഗ്രാമതല കൃഷിക്കായി മെച്ചപ്പെട്ട കാലാവസ്ഥാ സംരക്ഷണം.", heroBtn: "തുടങ്ങുക",
+                headClimate: "01 // കാലാവസ്ഥാ വിവരം", labelRain: "മഴ", labelHeat: "താപനില", labelFlood: "പ്രളയ സാധ്യത", labelDrought: "വരൾച്ച", highText: "ഉയർന്ന", lowText: "കുറഞ്ഞ",
+                headMarket: "02 // നേരിട്ടുള്ള വിപണി", marketSub: "നേരിട്ട് വിൽക്കാം. വോയിസ് ഉപയോഗിച്ച് ലിസ്റ്റ് ചെയ്യുക.", crop1: "തേങ്ങ", crop2: "റബ്ബർ", formMarketTitle: "വിള രജിസ്ട്രേഷൻ", btnPost: "ലിസ്റ്റ് ചെയ്യുക",
+                headLabour: "03 // തൊഴിലാളി കേന്ദ്രം", formLabourTitle: "തൊഴിലാളി രജിസ്ട്രേഷൻ", btnReg: "രജിസ്റ്റർ", btnVoice: "വോയിസ്", btnHire: "വിളിക്കുക",
+                phName: "പൂർണ്ണമായ പേര്", phMarketDesc: "വിശദാംശങ്ങൾ (വിള, അളവ്, വില)", phLabourDesc: "കഴിവുകളും കൂലിയും"
+            }
+        };
+
+        // --- 2. UPDATE LOGIC ---
+        function updateLanguage(lang) {
+            const t = translations[lang];
+            // Update Text content for elements with data-t
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (t[key]) el.innerHTML = t[key];
+            });
+            // Update Placeholders for elements with data-p
+            document.querySelectorAll('[data-p]').forEach(el => {
+                const key = el.getAttribute('data-p');
+                if (t[key]) el.placeholder = t[key];
+            });
+        }
+
+        document.getElementById('lang-select').addEventListener('change', (e) => {
+            updateLanguage(e.target.value);
+        });
+
+        // --- 3. VOICE & ACTIONS ---
+        function startVoice(targetId) {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = document.getElementById('lang-select').value;
+            recognition.onstart = () => { document.getElementById(targetId).placeholder = "Listening..."; };
+            recognition.onresult = (e) => {
+                document.getElementById(targetId).value = e.results[0][0].transcript;
+            };
+            recognition.start();
+        }
+
+        function handleSubmit(msg) {
+            alert("SUCCESS: " + msg);
+        }
+    </script>
+</body>
+</html>
